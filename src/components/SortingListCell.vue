@@ -97,7 +97,7 @@ export default {
     box-sizing: border-box;
     border: 1px solid $border-color;
   }
-  .checkbox::after {
+  .checkbox:after {
     font-family: 'Font Awesome 5 free';
     display: none;
     background-size: 100%;
