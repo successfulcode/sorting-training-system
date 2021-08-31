@@ -110,7 +110,7 @@ export default {
   .checkbox:checked {
     background-color: $orange-color;
   }
-  .checkbox:checked:after {
+  .checkbox:checked::after {
     display: block;
   }
 
