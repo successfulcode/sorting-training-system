@@ -4,7 +4,9 @@
       Sorting Training System
     </span>
     <span>
-      <button class="start-button">Start sorting!</button>
+      <button class="start-button" @click="toggleModal">
+        Start sorting!
+      </button>
     </span>
   </div>
   <div class="table-container">
@@ -33,18 +35,36 @@
       </tfoot>
     </table>
   </div>
+  <teleport to="body">
+    <sorting-list-modal
+      @toggleShowModal="toggleModal"
+      :isModalActive="isModalOpen"
+      @startSort="startSort"
+    ></sorting-list-modal>
+  </teleport>
 </template>
 
 <script>
 import emailsData from '@/data/emails.json';
 import SortingListCell from '@/components/SortingListCell.vue';
+import SortingListModal from '@/components/SortingListModal.vue';
+
 export default {
   name: 'SortingList',
-  components: { SortingListCell },
+  components: { SortingListCell, SortingListModal },
   data() {
     return {
-      emails: emailsData
+      emails: emailsData,
+      isModalOpen: false
     };
+  },
+  methods: {
+    toggleModal() {
+      this.isModalOpen = !this.isModalOpen;
+    },
+    startSort(numberOfPeople) {
+      console.log('startSort', numberOfPeople);
+    }
   }
 };
 </script>
@@ -52,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/_variables';
 .title {
-  padding: 3rem 0rem 1rem;
+  padding: 3rem 0.2rem 1rem;
   display: flex;
   justify-content: space-between;
   max-width: 71.125rem;
