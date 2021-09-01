@@ -14,7 +14,10 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "bulma": "^0.9.3",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "faker": "^5.5.3",
+    "moment": "^2.29.1",
+    "vue": "^3.0.0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

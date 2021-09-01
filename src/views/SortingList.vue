@@ -13,8 +13,8 @@
     <table class="table">
       <thead>
         <tr class="table-header">
-          <th class="border-right counter-label pr-6" colspan="5">
-            20 people in the list
+          <th class="border-right counter-label pr-6" colspan="6">
+            {{ elementsForSorting.length }} people in the list
           </th>
         </tr>
         <tr class="table-header">
@@ -23,10 +23,22 @@
           <th>Tags</th>
           <th>Full name</th>
           <th>Location</th>
+          <th>Date</th>
         </tr>
       </thead>
-      <tbody v-for="item of emails" :key="item.email">
-        <sorting-list-cell :email="item.email"></sorting-list-cell>
+      <tbody>
+        <draggable
+          v-model="elementsForSorting"
+          tag="transition-group"
+          v-bind="dragOptions"
+          @start="drag = true"
+          @end="drag = false"
+          item-key="email"
+        >
+          <template #item="element">
+            <sorting-list-cell :person="element"></sorting-list-cell>
+          </template>
+        </draggable>
       </tbody>
       <tfoot class="foot">
         <tr>
@@ -45,26 +57,69 @@
 </template>
 
 <script>
-import emailsData from '@/data/emails.json';
 import SortingListCell from '@/components/SortingListCell.vue';
 import SortingListModal from '@/components/SortingListModal.vue';
+import draggable from 'vuedraggable';
+import faker from 'faker';
+import moment from 'moment';
+
+const MAX_NUMBER_OF_POTATOES = 100;
 
 export default {
   name: 'SortingList',
-  components: { SortingListCell, SortingListModal },
+  components: {
+    SortingListCell,
+    SortingListModal,
+    draggable
+  },
   data() {
     return {
-      emails: emailsData,
-      isModalOpen: false
+      elementsForSorting: [],
+      isModalOpen: false,
+      potatoes: Array.from({ length: MAX_NUMBER_OF_POTATOES }).map((_, i) => i),
+      taskExecutionTime: ''
     };
   },
   methods: {
     toggleModal() {
       this.isModalOpen = !this.isModalOpen;
     },
-    startSort(numberOfPeople) {
-      console.log('startSort', numberOfPeople);
+    startSort(peopleListLength) {
+      this.setElementsForSorting(peopleListLength);
+      this.isModalOpen = false;
+    },
+    startTaskTime() {
+      console.log('startTaskTime');
+    },
+    setRandomElementFromArray(arr) {
+      const elementIntex = Math.floor(Math.random() * arr.length);
+      return arr[elementIntex];
+    },
+    setElementsForSorting(peopleListLength = 40) {
+      return (this.elementsForSorting = Array.from(
+        { length: peopleListLength },
+        () => ({
+          email: faker.internet.email(),
+          name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+          country: faker.address.country(),
+          date: moment(faker.date.past()).format('YYYY-MM-DD, HH:mm'),
+          potatoesCount: this.setRandomElementFromArray(this.potatoes)
+        })
+      ));
     }
+  },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 200,
+        group: 'description',
+        disabled: false,
+        ghostClass: 'ghost'
+      };
+    }
+  },
+  mounted() {
+    this.setElementsForSorting();
   }
 };
 </script>

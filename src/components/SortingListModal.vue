@@ -19,12 +19,13 @@
         <input
           :class="[
             'input',
-            numberOfPeople < 20 && 'is-danger',
-            numberOfPeople > 100 && 'is-danger'
+            peopleListLength < 20 && 'is-danger',
+            peopleListLength > 100 && 'is-danger'
           ]"
           type="number"
           placeholder=""
-          v-model="numberOfPeople"
+          v-on:keyup.enter="startSortHandler"
+          v-model="peopleListLength"
         />
       </section>
       <footer class="modal-card-foot">
@@ -40,8 +41,8 @@
           aria-label="start"
           @click="startSortHandler"
           :disabled="
-            (numberOfPeople < 20 && 'is-danger') ||
-              (numberOfPeople > 100 && 'is-danger')
+            (peopleListLength < 20 && 'is-danger') ||
+              (peopleListLength > 100 && 'is-danger')
           "
         >
           Start
@@ -58,7 +59,7 @@ export default {
   emits: ['toggleShowModal', 'startSort'],
   data() {
     return {
-      numberOfPeople: 20
+      peopleListLength: 20
     };
   },
   methods: {
@@ -66,7 +67,7 @@ export default {
       this.$emit('toggleShowModal');
     },
     startSortHandler() {
-      this.$emit('startSort', this.numberOfPeople);
+      this.$emit('startSort', this.peopleListLength);
     }
   }
 };
