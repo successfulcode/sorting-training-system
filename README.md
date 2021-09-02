@@ -11,6 +11,8 @@ The user has to drag and drop the rows from the most potatoes at the top to the 
 After the list is sorted in the correct order, stop the timer and show a success message with his score.
 
 ## Live preview
+https://sorting-training-system.netlify.app/
+
 ![timer2](https://user-images.githubusercontent.com/56683358/131927871-117cffae-8290-4ae9-84cb-35f348712e6d.jpg)
 
 ## Project setup
