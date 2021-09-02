@@ -234,11 +234,15 @@ export default {
   padding: 1rem;
 }
 .table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
   border: 1px solid $border-color;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.101972);
   max-width: 71.125rem;
   width: 100%;
   font-size: 0.875rem;
+  margin-bottom: 3rem;
   .border-right {
     border-right: 1px solid $border-color;
   }
