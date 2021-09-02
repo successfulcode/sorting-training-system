@@ -10,6 +10,8 @@ Each entry has a random email, a number of potatoes that this person has (must b
 The user has to drag and drop the rows from the most potatoes at the top to the least potatoes at the bottom.
 After the list is sorted in the correct order, stop the timer and show a success message with his score.
 
+![timer](https://user-images.githubusercontent.com/56683358/131925099-da76acf7-be6d-41f2-af16-37e66a1406bc.jpg)
+
 ## Project setup
 ```
 npm install
