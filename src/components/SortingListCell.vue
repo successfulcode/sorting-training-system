@@ -120,4 +120,14 @@ export default {
 .marked-background-color {
   background-color: #f5f5f5;
 }
+@media only screen and (max-width: 768px) {
+  .tag {
+    font-size: 0.775rem;
+  }
+  @media only screen and (max-width: 414px) {
+    .tag {
+      font-size: 0.35rem;
+    }
+  }
+}
 </style>

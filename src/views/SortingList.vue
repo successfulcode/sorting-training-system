@@ -256,4 +256,24 @@ export default {
     height: 5.063rem;
   }
 }
+@media only screen and (max-width: 768px) {
+  .table {
+    font-size: 0.775rem;
+  }
+  @media only screen and (max-width: 414px) {
+    .table {
+      font-size: 0.4rem;
+    }
+    .title {
+      .text {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  @media only screen and (max-width: 414px) {
+    .table {
+      font-size: 0.3rem;
+    }
+  }
+}
 </style>
