@@ -1,6 +1,6 @@
 # sorting-training-system
 
-Technology stack: Vue.js 3, Bulma
+Technology stack: Vue.js 3, Bulma, Moment.js, Vue.Draggable
 
 How app work:
 After clicking "Start sorting", show a modal where its possible to enter a number of people to add to the list.
