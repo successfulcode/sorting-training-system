@@ -75,9 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/styles/_variables';
-.modal-background {
-  cursor: pointer;
-}
+
 .times {
   font-size: 1.063rem;
   color: #999999;
