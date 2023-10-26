@@ -1,5 +1,7 @@
 # sorting-training-system
 
+Made in 2020
+
 Technology stack: Vue.js 3, Bulma, Moment.js, Vue.Draggable
 
 How app work:
